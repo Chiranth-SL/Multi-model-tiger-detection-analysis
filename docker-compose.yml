@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  # ============================================================
+  # WEB UI - The main interface you interact with
+  # Open http://localhost:8501 in your browser
+  # ============================================================
+  web_ui:
+    build: ./web_ui
+    container_name: tiger_web_ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      - resnet_api
+      - vgg_api
+      - googlenet_api
+      - yolo_api
+      - megadetector_api
+      - speciesnet_api
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 1: ResNet18 - Lightweight classification backbone
+  # ============================================================
+  resnet_api:
+    build: ./resnet_api
+    container_name: tiger_resnet
+    volumes:
+      - ./weights:/weights:ro
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 2: VGG11 - Deep classification network
+  # ============================================================
+  vgg_api:
+    build: ./vgg_api
+    container_name: tiger_vgg
+    volumes:
+      - ./weights:/weights:ro
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 3: GoogLeNet - Inception-based classifier
+  # ============================================================
+  googlenet_api:
+    build: ./googlenet_api
+    container_name: tiger_googlenet
+    volumes:
+      - ./weights:/weights:ro
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 4: YOLOv8 Nano - Real-time object detector
+  # ============================================================
+  yolo_api:
+    build: ./yolo_api
+    container_name: tiger_yolo
+    volumes:
+      - ./weights:/weights:ro
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 5: MegaDetector v5 - Wildlife detection specialist
+  # ============================================================
+  megadetector_api:
+    build: ./megadetector_api
+    container_name: tiger_megadetector
+    networks:
+      - tiger_network
+
+  # ============================================================
+  # MODEL 6: SpeciesNet - Species classification model
+  # ============================================================
+  speciesnet_api:
+    build: ./speciesnet_api
+    container_name: tiger_speciesnet
+    networks:
+      - tiger_network
+
+networks:
+  tiger_network:
+    driver: bridge

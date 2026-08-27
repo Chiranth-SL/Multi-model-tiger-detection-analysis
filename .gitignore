@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+
+# PyTorch / Models
+# Note: If you plan to push this to GitHub, uncomment the line below 
+# to ignore weights, OR use Git LFS (Large File Storage), because 
+# GitHub blocks files over 100MB (VGG11 is ~500MB).
+# weights/*.pt

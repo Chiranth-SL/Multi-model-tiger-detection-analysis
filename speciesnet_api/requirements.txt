@@ -1,0 +1,8 @@
+speciesnet
+fastapi
+uvicorn
+python-multipart
+psutil
+Pillow
+torch
+torchvision
