@@ -22,7 +22,7 @@ The application is built using a **Microservices Architecture**:
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
 
 ### 1. Model Weights (Important!)
-Because GitHub restricts files larger than 100MB (and VGG11 is ~500MB), the model weights must be placed in the `weights/` directory before running. 
+Because GitHub restricts files larger than 100MB, the model weights must be placed in the `weights/` directory before running. 
 Ensure your `weights/` folder contains:
 - `yolov8n_tiger.pt`
 - `ResNet18_tiger.pt`
