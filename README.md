@@ -31,17 +31,28 @@ Ensure your `weights/` folder contains:
 
 *(Note: MegaDetector and SpeciesNet automatically download their weights during the Docker build process).*
 
-### 2. Build and Run
-Open your terminal in the root of this repository and run:
+### 2. Start the Containers
+Open your terminal in the `docker_app` folder (where the `docker-compose.yml` file is located) and run:
 ```bash
 docker-compose up --build
 ```
+*(Note: The `--build` flag is only required the very first time you run the application, or if you make changes to the code. For everyday use, you can skip the build step and just run `docker-compose up` to start it much faster. Add `-d` to run it in the background: `docker-compose up -d`)*
 
 ### 3. Access the Dashboard
-Once the terminal shows all containers have started, open your web browser and navigate to:
+Once the containers have started, open your web browser and navigate to:
 👉 **http://localhost:8501**
 
 Upload a test image, click **Run All Models**, and view the real-time latency, memory usage, and confidence comparisons!
+
+### 4. Stop the Containers
+When you are finished using the application, it's important to shut down the containers to free up your computer's resources. 
+
+If you are running the containers in the foreground, simply press `Ctrl+C` in your terminal.
+
+If you ran them in the background (using `-d`), or just want to ensure everything is completely cleaned up, run the following command in the same directory:
+```bash
+docker-compose down
+```
 
 ## 🧠 Smart Memory Management
 Running 6 deep learning models typically causes CUDA Out-Of-Memory (OOM) crashes on standard laptops. This repository solves this by:
